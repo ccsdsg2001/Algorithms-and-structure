@@ -44,6 +44,7 @@ public class SparseArray {
                 }
             }
         }
+        System.out.println(count);
 
         System.out.println();
         System.out.println("稀疏数组为");
@@ -59,6 +60,7 @@ public class SparseArray {
         for (int i =1;i<sparseArrp.length;i++){
             chessarr2[sparseArrp[i][0]][sparseArrp[i][1]] = sparseArrp[i][2];
         }
+        System.out.println(sparseArrp.length);
 
 //        输出恢复后的二维数组
         System.out.println();
