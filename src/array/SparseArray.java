@@ -1,4 +1,4 @@
-package databasestructures;
+package array;
 
 import javax.swing.*;
 
