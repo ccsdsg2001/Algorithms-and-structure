@@ -3,6 +3,8 @@ package linkedlist;
 import com.sun.source.tree.NewArrayTree;
 import org.apache.commons.math3.util.ArithmeticUtils;
 
+import java.util.Stack;
+
 public class list {
     public static void main(String[] args){
 
@@ -103,6 +105,26 @@ public class list {
         }
 //        将head.next指向reversehead。next，实现单链表的反转
         head.next=reverseHead.next;
+    }
+
+//    题目4：单链表的逆序打印
+//    可以利用栈的先进先出特点，将各个节点压入栈中，实现逆序打印效果
+    public static void reversePrint(Heronode head){
+        if(head.next == null){
+            return;//链表为空，不打印
+        }
+        //创建一个栈，将各个节点压入栈中
+        Stack<Heronode> stack =new Stack<Heronode>();
+        Heronode cur =head.next;
+//        将所有链表节点压入栈
+        while (cur != null){
+            stack.push(cur);
+            cur = cur.next;//cur后移，压入下一个节点
+        }
+//        将链表中节点进行打印，pop出栈
+        while (stack.size()>0){
+            System.out.println(stack.pop());
+        }
     }
 
 }
