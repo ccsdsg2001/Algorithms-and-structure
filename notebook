@@ -38,3 +38,18 @@
 如需要按照编号的顺序添加，思路：1首先找到新添加的节点的位置，是通过辅助变量（指针），通过遍历来搞定。2.新的节点.next=temp.next 3.将temp.next= 新的节点
 3.修改节点功能：（1）先找到该节点，通过遍历（2）temp.name=newHeroNode.name;temp.nickname=newHeroNode.nickname
 4.删除节点 （1）先找到需要删除这个节点的前一个节点temp。（2）temp.next =temp.next.next (3)被删除节点不会有其他引向，被垃圾回收机制回收
+求单链表中有效节点的个数
+/*方法：找到单链表节点的个数
+* head 链表的头节点
+* return 返回的就是有效节点的个数*/
+查找单链表中的倒数第K个节点
+/*思路
+* 1.编写一个方法，接受head节点，同时接受一个index
+* 2.index表示是倒数第index个节点
+* 3.先从链表从头到尾遍历，得到链表总长度getlength
+* 4.得到size后，从链表中第一个开始遍历(size-index)个，就可以得到
+* 5.如找到就返回节点，否则就返回null*/
+单链表的反转
+思路：1.先定义一个节点reverserhead =new Heronode（）
+    * 2.从头遍历到尾遍历原来的链表，每遍历一个节点，就将其取出，并放在新的链表reversehead的最前端
+    * 3原来的链表head.next =reverseHead.next*/

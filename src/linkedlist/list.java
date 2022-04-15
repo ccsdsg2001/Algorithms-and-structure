@@ -1,9 +1,12 @@
 package linkedlist;
 
 import com.sun.source.tree.NewArrayTree;
+import org.apache.commons.math3.util.ArithmeticUtils;
 
 public class list {
     public static void main(String[] args){
+
+
 //        进行测试
         Heronode hero1 =new Heronode(1,"2","3");
         Heronode hero2 =new Heronode(2,"2","3");
@@ -16,6 +19,9 @@ public class list {
         singleLinkedList.add(hero2);
         singleLinkedList.add(hero3);
         singleLinkedList.add(hero4);
+        reverseLise(singleLinkedList.getHead());
+        singleLinkedList.list();
+
 
         singleLinkedList.addByorder(hero1);
         singleLinkedList.addByorder(hero4);
@@ -29,13 +35,86 @@ public class list {
         singleLinkedList.del(3);
         singleLinkedList.del(2);
         singleLinkedList.list();
+        System.out.println(getLength(singleLinkedList.getHead()));
     }
+//   题目1.求单链表中有效节点的个数
+    /*方法：找到单链表节点的个数
+    * head 链表的头节点
+    * return 返回的就是有效节点的个数*/
+    public static int getLength(Heronode head){
+        if(head.next==null){//空链表
+            return 0;
+        }
+        int length =0;
+//        定义一个辅助变量，不统计头节点
+        Heronode cur =head.next;
+        while (cur != null){
+            length++;
+            cur =cur.next;//遍历
+        }
+        return length;
+    }
+
+//    题目2:查找单链表中的倒数第K个节点
+    /*思路
+    * 1.编写一个方法，接受head节点，同时接受一个index
+    * 2.index表示是倒数第index个节点
+    * 3.先从链表从头到尾遍历，得到链表总长度getlength
+    * 4.得到size后，从链表中第一个开始遍历(size-index)个，就可以得到
+    * 5.如找到就返回节点，否则就返回null*/
+    public static Heronode findLastIndexNode(Heronode head,int index) {
+//        如果链表为空，则放回null
+        if (head.next == null) {
+            return null;//没有找到
+        }
+//        第一个遍历得到链表的长度（节点个数）
+        int size = getLength(head);
+//        第二次遍历 size-index位置，就是倒数第k个节点
+//        先做一个index校验
+        if (index <= 0 || index > size) {
+            return null;
+        }
+//        定义辅助遍历，for循环定位倒数的index
+        Heronode cur =head.next;
+        for(int i =0;i<size -index;i++){
+            cur =cur.next;
+        }
+        return cur;
+    }
+//    题目3：单链表的反转
+    /*思路：1.先定义一个节点reverserhead =new Heronode（）
+    * 2.从头遍历到尾遍历原来的链表，每遍历一个节点，就将其取出，并放在新的链表reversehead的最前端
+    * 3原来的链表head.next =reverseHead.next*/
+    public static void reverseLise(Heronode head){
+//        如果当前列表为空，或只有一个节点，无需反转，直接返回
+        if(head.next ==null||head.next.next ==null){
+            return;
+        }
+//        定义一个辅助的指针（变量），遍历原来的链表
+        Heronode cur = head.next;
+        Heronode next =null;//指向当前节点【cur】的下一个节点
+        Heronode reverseHead =new Heronode(0, "", "");
+//        遍历原来的链表，每遍历一个节点，就将其取出，并放在新的链表reverseHead的最前端
+        while (cur !=null){
+            next =cur.next;//先暂时保存当前节点的下一个节点
+            cur.next =reverseHead.next;//将cur的下一个节点指向新的链表的最前端
+            reverseHead.next=cur;//将cur连接到新的链表上
+            cur = next;//让cur后移
+        }
+//        将head.next指向reversehead。next，实现单链表的反转
+        head.next=reverseHead.next;
+    }
+
 }
 
 
 class SingleLinkedList {
     //    先定义化一个头节点，头节点不作动作，不存放具体数据
     private Heronode head = new Heronode(0, "", "");
+
+    public Heronode getHead(){
+        return head;
+    }
 
     //    添加节点到单向链表。1.找到当前链表的最后节点。2.将最后节点的next指向新的节点
     public void add(Heronode heronode) {
