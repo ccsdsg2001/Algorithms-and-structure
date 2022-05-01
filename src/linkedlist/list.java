@@ -138,6 +138,7 @@ class SingleLinkedList {
         return head;
     }
 
+
     //    添加节点到单向链表。1.找到当前链表的最后节点。2.将最后节点的next指向新的节点
     public void add(Heronode heronode) {
 
@@ -182,6 +183,8 @@ class SingleLinkedList {
             temp.next = heronode;
         }
     }
+
+
 
     //    修改节点的消息，根据no编号来修改.1,根据newheronode的no来修改
     public void update(Heronode newHeronode) {
