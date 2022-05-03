@@ -54,6 +54,7 @@ class BinaryTree{
         if(this.root!=null){
             this.root.preOrder();
         }else {
+
             System.out.println("null");
         }
     }
