@@ -149,7 +149,7 @@ class ThreadedBinaryTree{
             pre.setRightType(1);
             pre.setRight(node);
         }
-        pre=node
+        pre=node;
     }
 
     //前序遍历
