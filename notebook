@@ -342,6 +342,18 @@ while(n>fib(k)-1) k++;.
 2.赫夫曼编码是按字节来处理的,可以处理所有的文件
 3,如果一个文件汇总的内容,重复的数据不多,压缩的效果也不会很明显
 
+二叉排序树
+二叉排序树：BST，对于二叉排序树的任何一个非叶子节点，要求左子节点的值比当前节点的值小，右子节点的值比当前节点的值大
+PS:如果有相同的值，可以将该节点放在右子节点或左子节点
+二叉排序树的创建和遍历：看代码
+二叉排序树的删除分为三种情况：
+1.删除叶子节点：（1）需要先去找到要删除的节点targetNode（2）找到target的父节点parent(3)确定target是parent的左子节点还是右子节点(4)根据前面情况来删除左子节点parent.left=null,右子节点parent.right=null
+2.删除只有一节子树的节点:(1)先去找到要删除的节点targetNode(2)找到targetNode的父节点parent(3)确定targetNode的子节点是左子节点还是右子节点(4)targetNode是parent的左子节点还是右子节点
+(5)如果targetNode有左子节点1.如果是target是parent的左子节点parent.left=targetNode.left;2.如果targetNode是parent的右子节点parent.right=targetNode.left;
+(6)如果targetNode有右子节点1.如果targetNode是parent的左子节点parent.left=targetNode.right.2.如果targetNode是parent的右子节点,parent.right=targetNode.right
+3.删除两颗子树的节点(1)先去找到要删除的节点targetNode(2)找到targetNode的父节点parent(3)从targetNode的右子树找到最小的节点(4)用一个临时变量,嫁给你最小节点的值保存在temp=11
+(5)删除该最小节点(5)targetNode.value=temp;
+
 
 
 
