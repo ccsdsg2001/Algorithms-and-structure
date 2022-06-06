@@ -7,7 +7,7 @@ import java.util.Date;
 public class SelectSort {
     public static void main(String[] args) {
 //        int[] arr = {101, 39, 49, 142,-1,35,20};
-        int[] arr = new int[80000];
+        int[] arr = new int[8];
         for(int i =0;i<arr.length;i++){
             arr[i] =(int) (Math.random()*80000);
         }

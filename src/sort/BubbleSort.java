@@ -7,9 +7,9 @@ import java.util.Date;
 public class BubbleSort {
     public static void main(String[] args) {
         //测试冒泡排序速度
-        int[] arr = new int[80000];
-        for (int i = 0; i < 80000; i++) {
-            arr[i] = (int) (Math.random() * 800000);
+        int[] arr = new int[8];
+        for (int i = 0; i < 8; i++) {
+            arr[i] = (int) (Math.random() * 80);
         }//生成数
 
         Date date = new Date();
