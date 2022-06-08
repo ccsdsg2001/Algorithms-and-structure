@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class QuickSort {
     public static void main(String[] args) {
-        int[] arr ={-3,-58,2,33,424,12};
+        int[] arr ={-43,-248,562,323,44,112,123,32};
 //        for (int i = 0; i < arr.length; i++) {
 //            arr[i] = (int) (Math.random() * 800000);
 //        }//生成数

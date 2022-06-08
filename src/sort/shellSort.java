@@ -8,10 +8,10 @@ public class shellSort {
     public static void main(String[] args) {
 //        int[] arr = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0};
 //        shellSort(arr);
-        int[] arr =new int[80000];
+        int[] arr =new int[80];
 
         for(int i =0;i<arr.length;i++){
-            arr[i] =(int) (Math.random()*80000);
+            arr[i] =(int) (Math.random()*100);
         }
 
         Date date = new Date();
@@ -19,7 +19,7 @@ public class shellSort {
         String date1 = simpleDateFormat.format(date);
         System.out.println(date1);
 
-        shellSort(arr);//测试冒泡排序
+        shellsort2(arr);//测试冒泡排序
 
         Date date2 = new Date();
         String date13 = simpleDateFormat.format(date2);
@@ -28,22 +28,43 @@ public class shellSort {
 
     public static void shellSort(int[] arr) {
         int temp = 0;
-        int count = 0;
         //循环处理
-        for (int gap = arr.length/2;gap>0;gap/=2){
-            for(int i = gap;i<arr.length;i++){
+        for (int gap = arr.length/2;gap>0;gap/=2) {
+            for (int i = gap; i < arr.length; i++) {
                 //遍历各组中所有的元素(共gap组,每组有个元素),步长gap
-                for(int j =i-gap;j>=0;j-=gap){
+                for (int j = i - gap; j >= 0; j -= gap) {
                     //如果当前元素大于加上步长后的那个元素,说明交换
-                    if(arr[j] >arr[j+gap]){
-                        temp =arr[j];
-                        arr[j] =arr[j+gap];
-                        arr[j+gap] =temp;
+                    if (arr[j] > arr[j + gap]) {
+                        temp = arr[j];
+                        arr[j] = arr[j + gap];
+                        arr[j + gap] = temp;
                     }
                 }
             }
-//            System.out.println(Arrays.toString(arr));
         }
+    }
+    //进行优化==>位移法
+    public static void shellsort2(int[] arr){
+        //增量gap,并逐步缩小增量
+        for(int gap=arr.length/2;gap>0;gap/=2){
+            //从第gap个元素,逐个对其所在的组进行直接插入排序
+            for(int i=gap;i<arr.length;i++){
+                int j =i;
+                int temp = arr[j];
+                if(arr[j] > arr[j-gap]){
+                    while (j-gap >=0 && temp <arr[j-gap]){
+                        //移动
+                        arr[j] =arr[j-gap];
+                        j-=gap;
+                    }
+                    //当退出while之后,就给temp找到插入的位置
+                    arr[j] =temp;
+                }
+            }
+        }
+    }
+}
+//            System.out.println(Arrays.toString(arr));
         /*
         //第一轮排序,将十个数据分成了5组
         for(int i =5;i<arr.length;i++){
@@ -86,26 +107,3 @@ public class shellSort {
         }
         System.out.println(Arrays.toString(arr));
     } */
-
-    }
-    //进行优化==>位移法
-    public static void shellsort2(int[] arr){
-        //增量gap,并逐步缩小增量
-        for(int gap=arr.length/2;gap>0;gap/=2){
-            //从第gap个元素,逐个对其所在的组进行直接插入排序
-            for(int i=gap;i<arr.length;i++){
-                int j =i;
-                int temp = arr[j];
-                if(arr[j] > arr[j-gap]){
-                    while (j-gap >=0 && temp <arr[j-gap]){
-                        //移动
-                        arr[j] =arr[j-gap];
-                        j-=gap;
-                    }
-                    //当退出while之后,就给temp找到插入的位置
-                    arr[j] =temp;
-                }
-            }
-        }
-    }
-}
