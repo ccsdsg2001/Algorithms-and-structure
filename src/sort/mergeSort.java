@@ -5,10 +5,10 @@ import java.util.Date;
 
 public class mergeSort {
     public static void main(String[] args) {
-        int[] arr = new int[8000000];
+        int[] arr = new int[80];
 
-        for(int i = 0; i < 8000000; ++i) {
-            arr[i] = (int)(Math.random() * 8000000.0D);
+        for(int i = 0; i < arr.length; ++i) {
+            arr[i] = (int)(Math.random() * 100);
         }
 
         System.out.println("排序前");

@@ -107,13 +107,13 @@ public class Sort {
     void quickSort(int[] arr,int left,int right) {
         int l=left;
         int r=right;
-        int pivot=arr[(right+left)/2];
+        int pivot=arr[(left+right)/2];
         int temp=0;
-        while (l<r){
-            while (arr[l]<pivot){
+        while (l>r){
+            if(arr[l]<pivot){
                 l+=1;
             }
-            while (arr[r]>pivot){
+            if(arr[r]>pivot){
                 r-=1;
             }
             if(l>=r){
@@ -129,7 +129,6 @@ public class Sort {
                 l+=1;
             }
         }
-
         if(l==r){
             l+=1;
             r-=1;
@@ -138,10 +137,59 @@ public class Sort {
             quickSort(arr,left,r);
         }
         if(right>l){
-            quickSort(arr,l,right);
+            quickSort(arr,r,left);
         }
     }
-}
+
+
+
+
+    @Test
+    void mergesort(int[] arr,int left,int right,int[] temp){
+       if(left<right){
+           int mid=(left+right)/2;
+           mergesort(arr,left,mid,temp);
+           mergesort(arr,mid+1,right,temp);
+           merge(arr,left,mid,right,temp);
+        }
+
+    }
+    @Test
+    void merge(int[] arr,int left,int mid,int right,int[] temp){
+        int i=left;
+        int j=mid+1;
+        int t=0;
+        while (i<=mid&&j<=right){
+            if(arr[i]<=arr[j]) {
+                temp[t] = arr[i];
+                ++t;
+                ++i;
+            }else {
+                temp[t]=temp[j];
+                ++t;
+                ++j;
+            }
+            while (i<=mid){
+                temp[t]=arr[i];
+                ++t;
+                ++i;
+            }
+            while (j<=mid){
+                temp[t]=arr[j];
+                ++t;
+                ++j;
+            }
+            t=0;
+            for(int tmepleft=left;tmepleft<=right;++tmepleft){
+                arr[tmepleft]=arr[t];
+                ++t;
+            }
+
+        }
+
+      }
+    }
+
 
 
 
